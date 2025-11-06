@@ -1,0 +1,55 @@
+
+syntax = "proto3";
+
+package studentpb;
+
+option go_package = "student-grpc-gin/proto/studentpb";
+
+message Student {
+  string id = 1;
+  string name = 2;
+  int32 age = 3;
+  string email = 4;
+}
+
+message CreateStudentRequest {
+  Student student = 1;
+}
+message CreateStudentResponse {
+  Student student = 1;
+}
+
+message GetStudentRequest {
+  string id = 1;
+}
+message GetStudentResponse {
+  Student student = 1;
+}
+
+message UpdateStudentRequest {
+  Student student = 1;
+}
+message UpdateStudentResponse {
+  Student student = 1;
+}
+
+message DeleteStudentRequest {
+  string id = 1;
+}
+message DeleteStudentResponse {
+  bool success = 1;
+}
+
+message ListStudentsRequest {}
+message ListStudentsResponse {
+  repeated Student students = 1;
+}
+
+service StudentService {
+  rpc CreateStudent(CreateStudentRequest) returns (CreateStudentResponse);
+  rpc GetStudent(GetStudentRequest) returns (GetStudentResponse);
+  rpc UpdateStudent(UpdateStudentRequest) returns (UpdateStudentResponse);
+  rpc DeleteStudent(DeleteStudentRequest) returns (DeleteStudentResponse);
+  rpc ListStudents(ListStudentsRequest) returns (ListStudentsResponse);
+}
+

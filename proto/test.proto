@@ -1,0 +1,39 @@
+
+syntax = "proto3";
+
+package testpb;
+
+option go_package = "test-grpc-gin/proto/testpb";
+
+message Test1 {
+  string id1 = 10;
+  string name1 = 20;
+  int32 age1 = 30;  
+  string email1 = 40;
+  string address1 = 50;
+  int32 pincode1 = 60;
+}
+
+message CreateTestRequest{
+Test1 test =10;
+}
+
+message UpdateTestRequest{
+string id1 =10;
+}
+
+message CreateTestResponse{
+    string message=10;
+}
+
+message UpdateTestResponse{
+    Test1 test =10;
+}
+
+
+service TestService{
+  rpc CreateTest(CreateTestRequest) returns (CreateTestResponse);
+  rpc UpdateTest(UpdateTestRequest) returns (UpdateTestResponse);
+}
+
+
